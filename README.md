@@ -1,55 +1,62 @@
-# In PARTY - 活動管理平台
+# In PARTY – Event Management Platform
 
-## 專案簡介
+## Project Overview
 
-In PARTY 是一個基於地理位置的活動管理平台，結合社交功能與遊戲化元素，讓使用者能夠探索附近的活動、創建自己的活動，並透過參與活動來提升角色等級。
+In PARTY is a location-based event management platform that blends social features with gamification. Users can explore nearby events, create their own, and level up their in-app character by participating.
 
-## 功能特色
+## Key Features
 
-### 🗺️ 地理位置服務
-- 自動偵測使用者位置，顯示 5 公里範圍內的活動
-- 地圖視覺化呈現活動地點
-- 支援地址搜尋與定位
+### 🗺️ Location Services
 
-### 🎉 活動管理
-- **創建活動**：發布活動資訊、上傳圖片、設定時間地點
-- **參加活動**：報名參加、取消報名、現場簽到
-- **活動資訊**：查看活動詳情、參與人數統計
+* Automatically detects the user’s location and shows events within a 5 km radius
+* Visualizes event locations on a map
+* Supports address search and geolocation
 
-### 🎮 遊戲化系統
-- 角色創建與成長系統
-- 等級與經驗值機制
-- 夥伴系統
-- 透過參與活動累積經驗值
+### 🎉 Event Management
 
-### 👤 使用者系統
-- 安全的註冊/登入機制（bcrypt 加密）
-- Session 管理
-- 權限控制
+* **Create Events:** publish event info, upload images, set time and venue
+* **Join Events:** register, cancel registration, on-site check-in
+* **Event Info:** view details and participant counts
 
-## 技術架構
+### 🎮 Gamification
 
-### 後端技術
-- **框架**：Flask (Python)
-- **資料庫**：MySQL/MariaDB
-- **Session 管理**：Flask-Session
-- **密碼加密**：bcrypt
-- **地理編碼**：Geopy (Nominatim, ArcGIS)
+* Character creation and progression
+* Level and experience system
+* Partner/companion system
+* Earn EXP by attending events
 
-### 前端技術
-- HTML/CSS/JavaScript
-- 地圖顯示（使用 Leaflet 或 Google Maps）
+### 👤 User System
 
-## 使用說明
+* Secure sign-up/sign-in (bcrypt password hashing)
+* Session management
+* Permission/role control
 
-### 一般使用者
-1. **註冊帳號**：首次使用需註冊，系統會自動創建角色
-2. **瀏覽活動**：在首頁地圖查看附近活動
-3. **參加活動**：點擊活動查看詳情並報名
-4. **簽到**：到達活動現場進行簽到，獲得經驗值
+## Tech Stack
 
-### 活動主辦者
-1. **發布活動**：進入上傳表單頁面 `/uploadForm.html`
-2. **填寫資訊**：輸入活動詳細資訊
-3. **上傳圖片**：支援 png, jpg, jpeg, gif 格式
-4. **管理活動**：查看報名人數與簽到狀態
+### Backend
+
+* **Framework:** Flask (Python)
+* **Database:** MySQL/MariaDB
+* **Session Management:** Flask-Session
+* **Password Hashing:** bcrypt
+* **Geocoding:** Geopy (Nominatim, ArcGIS)
+
+### Frontend
+
+* HTML/CSS/JavaScript
+
+## How to Use
+
+### For General Users
+
+1. **Register:** first-time users sign up; a character is created automatically
+2. **Browse Events:** view nearby events on the home page map
+3. **Join:** open an event to see details and register
+4. **Check-in:** check in on site to earn experience points
+
+### For Organizers
+
+1. **Publish an Event:** go to the upload form at `/uploadForm.html`
+2. **Fill in Details:** enter complete event information
+3. **Upload Images:** supports png, jpg, jpeg, gif
+4. **Manage Events:** view registrations and check-in status
