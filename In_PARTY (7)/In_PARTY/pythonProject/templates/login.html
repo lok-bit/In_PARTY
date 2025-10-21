@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Toggle Sidebar Example</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!--<link rel="stylesheet" href="static/index.css" />
+    <script src="static/index.js"></script>-->
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+        }
+    
+        .login-container {
+          display: flex;
+          align-items: center;
+          width: 600px;
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+        }
+    
+        .login-form {
+          flex: 1;
+          padding: 40px;
+        }
+    
+        .login-form h2 {
+          margin-bottom: 20px;
+        }
+    
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 20px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-sizing: border-box;
+        }
+    
+        .login-form input[type="submit"] {
+          width: 100%;
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          background-color: #007bff;
+          color: #fff;
+          cursor: pointer;
+        }
+    
+        .login-image {
+          flex: 1;
+          background: url('static/main.png'); 
+          background-size: cover;
+          background-position: center;
+          min-height: 200px;
+        }
+      </style>
+
+</head>
+
+
+
+<body>
+    {%include 'navbar.html'%}
+    
+    <body>
+        <div class="login-container">
+          <form class="login-form" action="/login" method="post">
+            <h2>Login</h2>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <p id="errortxt" class="errortxt"></p> 
+            <input type="submit" value="Login">
+          </form>
+          <div class="login-image"></div>
+        </div>
+      </body>
+    
+    <script>
+        if({{0 if error is not defined else 1}}){
+            let errortxt = document.getElementById("errortxt");
+            errortxt.innerHTML = "<p>帳號密碼錯誤!!!</p>"
+        }
+
+    </script>
+</body>
+</html>

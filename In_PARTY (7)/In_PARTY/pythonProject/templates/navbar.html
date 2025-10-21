@@ -1,0 +1,38 @@
+<head>
+    <link rel="stylesheet" href="static/navbar.css" />
+</head>
+<div class="navbar">
+  <!-- <div>標籤定義了一個區塊元素，class="navbar"指定了此元素使用.navbar樣式 -->
+    <a href="/" class="brand-logo">
+       <img src="{{ url_for('static', filename='main.png') }}" alt="Company Logo" height="30">
+    </a>
+  <!-- <span>標籤用於群組內容，class="brand-title"指定了使用.brand-title樣式 -->
+
+    <div>
+        <a href="/">首頁</a>
+        <a href="/">關於我們</a>
+        {% if session.logged_in %}
+        <a href="/service">服務</a>
+        {% endif %}
+  </div>
+
+  <div>
+    {% if session.logged_in %}
+    <div class="dropdown">
+        <a class="dropbtn"><img src="static/main.png" alt="Dropdown Icon" height="50"></a>
+        <div class="dropdown-content">
+            <a href="/">選項 1</a>
+            <a href="/">選項 2</a>
+            <a href="/">選項 3</a>
+        </div>
+    </div>
+    <a href="/logout">登出</a>
+    {% else %}
+    <a href="/login">登入</a>
+    <!-- <a>標籤定義了一個超鏈接，href屬性指定了鏈接的目標地址 -->
+    <a href="/register">註冊</a>
+    <!-- 另一個<a>標籤定義了一個註冊鏈接 -->
+    {% endif %}
+  </div>
+
+</div>

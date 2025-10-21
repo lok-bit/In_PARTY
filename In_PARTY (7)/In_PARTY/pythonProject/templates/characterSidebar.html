@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="static/characterSidebar.css" />
+<script src="static/characterSidebar.js"></script>
+
+<div id="sidebar" class="sidebar">
+    <div class="profile">
+        <div class="avatar">
+            <img id="characterAvatar" src="static/warrior.jpg" alt="Character Avatar">
+        </div>
+        <div class="info">
+            <h2 id="character">角色資訊</h2>
+            <p id="character-name">職業：戰士</p>
+            <p id="character-profession">職業：戰士</p>
+            <p id="character-level">等級：30</p>
+            <p id="character-exp">經驗：5000/10000</p>
+            <p id="character-partners">小夥伴：2</p>
+        </div>
+    </div>
+    <div class="partner">
+        <img src="static/charactersimage/1.png" alt="Partner Image">
+    </div>
+    <button id="openBtn">小夥伴圖鑑</button>
+</div>
+
+<div id="main">
+    <span id="menuIcon" onclick="openNav()">></span>
+</div>
+
+{%include 'partner.html'%}

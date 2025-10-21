@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Window</title>
+</head>
+<style>
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 20px;
+        z-index: 9999;
+    }
+    
+    .popup-content {
+        text-align: center;
+    }
+    
+    .photos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .photos img {
+        width: 30%;
+        margin: 10px;
+    }
+    
+    #closeBtn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    
+</style>
+<body>
+    
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <!-- Here you can dynamically add your content -->
+            <!-- For example, add your photos here -->
+            <div class="photos">
+                <!-- Placeholder for photos -->
+            </div>
+            <button id="closeBtn">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('openBtn').addEventListener('click', function() {
+            document.getElementById('popup').style.display = 'block';
+            // Here you can dynamically add content to the popup
+            // For example, add your photos dynamically
+            var photosContainer = document.querySelector('.photos');
+            // Assuming you have an array of photo URLs
+            var photoUrls = [
+                'static/charactersimage/1.png', 
+                'static/charactersimage/2.png', 
+                'static/charactersimage/3.png',
+                'static/charactersimage/4.png',
+                'static/charactersimage/5.png',
+                'static/charactersimage/6.png', 
+                'static/charactersimage/7.png', 
+                'static/charactersimage/8.png',
+                'static/charactersimage/9.png'
+            ];
+            photoUrls.forEach(function(url) {
+                var img = document.createElement('img');
+                img.src = url;
+                photosContainer.appendChild(img);
+            });
+        });
+        
+        document.getElementById('closeBtn').addEventListener('click', function() {
+            document.getElementById('popup').style.display = 'none';
+            // Clear the content when closing the popup
+            document.querySelector('.photos').innerHTML = '';
+        });
+        
+    </script>
+</body>
+</html>

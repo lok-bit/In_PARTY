@@ -1,0 +1,94 @@
+html{overflow-y: hidden;}    /* 內嵌CSS樣式 */
+/*消除左邊空隙*/
+body { font-family: Arial, sans-serif; margin: 0;  padding-top: 30px; }   /* 為固定導航欄預留空間 */
+.navbar { 
+   display: flex; 
+   justify-content: space-between ; 
+   margin: 30; align-items: center; 
+   background-color: #333; 
+   padding: 5px; position: fixed; 
+   top: 0; width: 100%; z-index: 1000; }/* .navbar樣式用於定義導航欄的外觀和位置 */
+
+.navbar a { color: white; padding: 20px 30px; margin: 20px; text-decoration: none; }   /* .navbar a樣式用於定義導航欄中鏈接的外觀 */
+.navbar a:hover { background-color: #ddd; color: black; }   /* .navbar a:hover樣式用於定義鼠標懸停在鏈接上時的外觀 */
+.brand-title { color: white; font-size: 24px; }   /* .brand-title樣式用於定義品牌標題的外觀 */
+
+.video-container { position: relative; width: 100%; padding-bottom: 100%; /* 調整此值以改變影片高度 */ }   /* .video-container樣式用於定義影片容器的外觀和位置 */
+
+video { width: 100%; margin: auto ;  }     /* video樣式用於定義<video>元素的外觀 */
+
+.about-inparty
+{
+   display: block;
+   front-size: 24;
+   background-color: #f0f0f0;
+   border-radius: 25px;   /* 氣泡外觀 */
+   padding: 10px 20px;
+   text-shadow: 2px 2px 2px #aaa;
+   margin-top: -550px;    /* 跟頂部(影片)保持距離 */
+   text-align: center; /* 文字置中 */
+   opacity: 0;
+
+   transform: translateY(20px);
+   animation: fadeInUp 1s forwards;
+
+}
+
+/* 頂欄美術  begin*/
+.navbar a {
+color: white;
+padding: 20px 30px;
+margin: 20px;
+text-decoration: none;
+position: relative;
+}
+
+.navbar a:before {
+content: "";
+position: absolute;
+width: 0;
+height: 2px;
+bottom: 0;
+left: 0;
+background-color: orange;
+visibility: hidden;
+transition: all 0.3s ease-in-out;
+}
+
+.navbar a:hover:before {
+visibility: visible;
+width: 100%;
+}
+
+.navbar a:hover {
+color: black;
+}
+.dropdown {
+   position: relative;
+   display: inline-block;
+}
+
+.dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: #f9f9f9;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 1;
+}
+
+.dropdown-content a {
+   color: black;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+}
+
+.dropdown-content a:hover {
+   background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+   display: block;
+}
+/* 頂欄美術 end */

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>inParty 網頁</title>
+
+<style>
+/* 圖片滑動效果  begin*/
+  .image-slider
+  {
+    display: flex;
+    overflow-x: auto; /* 启用横向滚动 */
+    overflow-y: hidden; /* 隱藏垂直滾動 */
+    width: 100%;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+    animation-delay:0.5s;
+  }
+
+  /* 圖片滑動效果  end*/
+
+
+
+  .display_img
+  {
+      display: flex;    /* 使用flex布局 */
+      flex-direction: row;    /* 元素垂直排列 */
+  }
+
+ /* 圖片包(文字)主設定 */
+  .image-text-container
+  {
+    border: 6px solid orange;   /* 橙色邊框 */
+    display: flex;    /* 使用flex布局 */
+    flex-direction: column;    /* 元素垂直排列 */
+
+    opacity: 0.5; /* 預設透明度為 0.7 */
+    transition: opacity 0.5s ease; /* 添加過渡效果 */
+
+
+    align-items: center;
+    margin-top: 20px;   /* 跟頂點的距離 */
+    text-align: center ;      /* 圖片置中 */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+    animation-delay: 0.5s;    /*延遲出現確保在【關於inparty後出現】*/
+
+    width: 550px;
+  }
+
+  .image-text-container.active
+  {
+    opacity: 1; /* 中間的圖片及文字設為不透明 */
+  }
+
+ .image-text-container:first-child,
+ .image-text-container:last-child
+ {
+     opacity: 0.3; /* 左右兩側的圖片及文字設為半透明 */
+ }
+
+  /* 圖片設定 */
+    .image-text-container img {
+      margin: 0px 60px;
+      width: 80%;    /* 使圖片寬度填滿容器 */
+      height: auto;    /* 保持方塊比例 */
+      margin-bottom: 0;    /* 與文字方塊的間距 */
+      transition: transform 0.5s ease;  /*過度效果*/
+    }
+
+    .image-text-container img:hover  /* hover 表示鼠標維持時 */
+    {
+        transform: scale(1.01); /* 鼠標維持時放大圖片 */
+    }
+
+
+
+  /* 文字方塊樣式 */
+  .text-box
+  {
+      background-color: black;    /* 黑色背景 */
+      color: white;      /* 白色文字 */
+      padding: 10px;      /* 內邊距 */
+      border-radius: 5px;     /* 園角邊框 */
+      width: 50%;     /* 計算寬度，減去內邊距 */
+
+      box-sizing: border-box;       /* 包括邊框和內邊距在內的寬度計算 */
+      margin-bottom: 10px;        /* 與下一個元素的間距 */
+
+  }
+
+
+  @keyframes fadeInUp
+  {
+    to
+    {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  .video-container img{
+    height: 900px; /* 設置寬度 */
+    width: 100%%; /* 高度自適應，保持原始圖像比例 */
+  }
+
+
+</style>
+</head>
+
+<body>
+<!-- <body>標籤定義了HTML文檔的主體部分 -->
+
+  {%include 'navbar.html'%}
+
+
+  <div class="video-container">
+    <!-- <div>標籤定義了一個用於包含<video>元素的區塊元素 -->
+    <img src="{{ url_for('static', filename='party.png') }}" alt="桌面圖">
+    <!-- <video>標籤用於嵌入影片，src屬性指定了影片文件的路徑和名稱 -->
+  </div>
+
+
+
+<div class="about-inparty">關於InParty</div>
+
+
+<div class="image-slider">
+  <div class="display_img">
+      <div class="image-text-container">
+       
+        <a href ="https://c111151146.my.canva.site/introduction">
+          <img src="{{ url_for('static', filename='introduction.png') }}" alt="介紹">
+      </a>
+
+  <div class="text-box">介紹 InParty</div>
+</div>
+
+<div class="image-text-container">
+      <a href ="https://c111151146.my.canva.site/inparty-ad">
+          <img src="{{ url_for('static', filename='InParty_AD.png') }}" alt="關於廣告">
+      </a>
+  <div class="text-box">關於InParty廣告投放</div>
+</div>
+
+<div class="image-text-container">
+  <a href ="https://c111151146.my.canva.site/about-activity">
+      <img src="{{ url_for('static', filename='about_active.png') }}" alt="活動介紹">
+  </a>
+  <div class="text-box">關於InParty的活動，了解更多</div>
+</div>
+
+  </div>
+</div>
+
+<script>
+  window.addEventListener('wheel', function(event)
+  {
+      const imageSlider =event.target.closest('.image-slider');
+      if(imageSlider)
+      {
+          event.preventDefault();
+          if (event.deltaY > 0)
+          {
+              imageSlider.scrollLeft += 50;
+          }
+          else if (event.deltaY < 0)
+          {
+              imageSlider.scrollLeft -= 50;
+          }
+
+          return;
+      }
+
+      event.preventDefault();
+
+
+      // 檢查滾輪向下滾動
+      if (event.deltaY > 0) {
+          window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: 'smooth' // 平滑滾動
+          });
+      }
+
+      // 檢查滾輪向上滾動
+      if (event.deltaY < 0) {
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth' // 平穩滑動
+          });
+      }
+  });
+
+
+  /* 圖片漸變 begin */
+const imageContainers = document.querySelectorAll('.image-text-container');
+
+window.addEventListener('scroll', function() {
+  const scrollPos = window.pageYOffset;
+  const sliderPos = document.querySelector('.image-slider').offsetTop;
+
+  imageContainers.forEach((container, index) => {
+    const containerPos = container.offsetTop;
+    const containerHeight = container.offsetHeight;
+
+    if (scrollPos >= containerPos - window.innerHeight / 2 && scrollPos <= containerPos + containerHeight / 2) {
+      const progress = (scrollPos - (containerPos - window.innerHeight / 2)) / (containerHeight / 2);
+      container.style.opacity = 0.3 + 0.7 * progress; // 根據滾動進度計算透明度
+    } else {
+      container.style.opacity = ''; // 恢復默認透明度
+    }
+  });
+});
+  /*  圖片漸變 end*/
+
+
+
+</script>
+
+</body>
+</html>

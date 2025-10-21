@@ -1,0 +1,62 @@
+#markerinf {
+    height: 100%;                   /* 側邊欄高度全高*/
+    width: 0;       
+    position: fixed;              /* 設定0才能收起來*/   
+    z-index: 3;                  /*設置了側邊欄的 Z 軸層級，確保它在其他元素之上顯示。*/
+    top: 70px;                         /*設置了側邊欄的位置為視窗的上方。*/
+    right: 0;                         /*設置了側邊欄的位置為視窗的左方。*/
+    background-color: aliceblue;        /*設置了側邊欄的背景顏色為色*/
+    overflow-x:hidden; 
+    transition: 0.5s;               /*這一行設置了側邊欄的過渡效果為 0.5 秒，這樣在側邊欄寬度發生變化時會有漸變效果(動畫效果)*/
+    padding-top: 60px;              /*在側邊欄上方留出 60px 空間。*/
+}
+ 
+#markerinf .closebtn {
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: #555;
+}
+
+#markerinf .event-details {
+    margin-bottom: 20px;
+}
+
+#markerinf .image-container {
+    margin-bottom: 10px;
+}
+
+#markerinf img {
+    display: block;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#markerinf .date-time {
+    font-style: italic;
+    color: #777;
+}
+
+#markerinf .linker {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+#markerinf button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#markerinf button:hover {
+    background-color: #0056b3;
+}

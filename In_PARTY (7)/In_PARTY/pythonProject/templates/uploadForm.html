@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>活動輸入</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+          font-family: 'Montserrat', sans-serif;
+          background-color: #f8f8f8;
+          color: #333;
+          padding: 20px;
+        }
+
+        h2 {
+          color: #28a745;
+          text-align: center;
+        }
+
+        form {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+          max-width: 800px;
+          margin: 0 auto;
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+          display: flex;
+          align-items: center;
+          margin-bottom: 20px;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        .input-group label {
+          margin-right: 10px;
+        }
+
+        label {
+          color: #666;
+          font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        textarea {
+          padding: 10px;
+          border: 2px solid #ccc;
+          border-radius: 5px;
+          transition: border-color 0.3s ease;
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="time"]:focus,
+        textarea:focus {
+          outline: none;
+          border-color: #28a745;
+          box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+        }
+
+        textarea {
+          grid-column: 1 / -1;
+        }
+
+        input[type="submit"] {
+          background: linear-gradient(to right, #28a745, #20c997);
+          color: #fff;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+          transition: transform 0.3s ease;
+          cursor: pointer;
+          justify-self: center;
+        }
+
+        input[type="submit"]:hover {
+          transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <h2>活動輸入</h2>
+    <form id="uploadForm">
+        <div class="input-group">
+            <label for="activityName">名稱：</label>
+            <input type="text" id="activityName" name="activityName">
+        </div>
+        <div class="input-group">
+            <label for="activityLocation">地點：</label>
+            <input type="text" id="activityLocation" name="activityLocation">
+        </div>
+        <div class="input-group">
+            <label for="activityStartDate">開始日期：</label>
+            <input type="date" id="activityStartDate" name="activityStartDate">
+        </div>
+        <div class="input-group">
+            <label for="activityStartTime">開始時間：</label>
+            <input type="time" id="activityStartTime" name="activityStartTime">
+        </div>
+        <div class="input-group">
+            <label for="activityEndDate">結束日期：</label>
+            <input type="date" id="activityEndDate" name="activityEndDate">
+        </div>
+        <div class="input-group">
+            <label for="activityEndTime">結束時間：</label>
+            <input type="time" id="activityEndTime" name="activityEndTime">
+        </div>
+        <div class="input-group">
+            <label for="activityUrl">網址：</label>
+            <input type="text" id="activityUrl" name="activityUrl">
+        </div>
+        <div>
+            <label for="activityContent">內容：</label>
+            <textarea id="activityContent" name="activityContent"></textarea>
+        </div>
+        <div class="input-group">
+            <label for="activityImage">圖片：</label>
+            <input type="file" id="activityImage" name="activityImage">
+        </div>
+        <div class="input-group">
+          <label for="activityKind">分類：</label>
+          <select id="activityKind" name="activityKind">
+              <option>culture</option>
+              <option>food</option>
+              <option>climbing</option>
+              <option>sports</option>
+              <option>travel</option>
+              <option>course</option>
+          </select>
+      </div>
+        <input type="submit" value="提交">
+    </form>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var formData = new FormData(this);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    }
+                    throw new Error('網路錯誤');
+                })
+                .then(data => {
+                    console.log(data);
+                    window.close();
+                })
+                .catch(error => {
+                    console.error('發生錯誤', error);
+                });
+
+        });
+    </script>
+</body>
+</html>

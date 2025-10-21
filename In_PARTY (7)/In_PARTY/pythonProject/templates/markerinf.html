@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="static/markerinf.css" />
+<script src="static/markerinf.js"></script>
+
+<div id="markerinf" class="markerinf">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeMarkerinf()">x</a>
+    <!-- Your markers content goes here -->
+    <div class="event-details">
+        <h2 id="name">1</h2>
+        <div class="image-container">
+            <img height="300" max-width="400" id="markerimg" src="{{ url_for('static', filename='main.png') }}" alt="Event Image">
+        </div>
+        <p class="markercontant" id="markercontant">2</p>
+        <p class="date-time">
+            <span id="markerstartdate">3</span> - <span id="markerenddate">4</span>
+        </p>
+        <p class="markerlocation" id="markerlocation">5</p>
+        <p class="markercount" id="markercount">6</p>
+        <a href="" target ="_blank" class="linker" id="linker">連結</a>
+    </div>
+    <button id="join" class="join">Join Event</button> 
+    <button id="toggleScannerWindow" onclick="toggleScannerWindow()">Open QR Scanner</button>
+    <button id="openScannerWindow" onclick="toggleQrcodeWindow()">Open QR code</button>
+</div>
+{%include 'qrcodewindow.html'%}

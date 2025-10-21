@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scan from WebCam</title>
+    <style>
+        /* 預設將視窗隱藏在畫面底部 */
+        #scannerWindow {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%; /* 視窗高度 */
+            background-color: #ffffff; /* 視窗背景色 */
+            overflow-y: auto; /* 允許視窗內容滾動 */
+            transition: transform 0.3s ease-out; /* 動畫效果 */
+            transform: translateY(100%); /* 初始位置在畫面底部 */
+        }
+
+        /* 顯示視窗時向上滑動 */
+        #scannerWindow.show {
+            display: block;
+            transform: translateY(0%);
+        }
+
+        /* 其他樣式 */
+        #scannerWindow h1 {
+            margin: 20px;
+        }
+
+        /* 其他樣式 */
+        #scannerWindow video {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 點擊按鈕顯示視窗 -->
+<button onclick="toggleScannerWindow()">Open QR Scanner</button>
+
+<!-- 視窗內容 -->
+<div id="scannerWindow">
+    {%include 'qrcodescan.html' %}
+</div>
+
+<!-- JavaScript 控制視窗顯示與隱藏 -->
+<script>
+    function toggleScannerWindow() {
+        var scannerWindow = document.getElementById('scannerWindow');
+        scannerWindow.classList.toggle('show');
+        qrCodeScan();
+    }
+
+    function removeScannerWindow() {
+        var scannerWindow = document.getElementById('scannerWindow');
+        scannerWindow.classList.remove('show');
+    }
+    window.removeScannerWindow = removeScannerWindow;
+</script>
+
+</body>
+</html>

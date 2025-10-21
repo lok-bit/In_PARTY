@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>basic example</title>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+
+<!--<script type="text/javascript" src="../jquery.qrcode.min.js"></script>
+--><script type="text/javascript" src="../static/jquery.qrcode.js"></script>
+<script type="text/javascript" src="../static/qrcode.js"></script>
+
+<h1 id="activityname">QR code：</h1>
+<div id="qrcodeCanvas"></div>
+<button class="stop-button2" id="stop-button2">X</button>
+
+
+<style>
+    div {
+        margin-bottom: 16px;
+    }
+
+    #qrcodeCanvas {
+        line-height: 0;
+        margin: 0 auto;
+        height:50%;
+        width:50%;
+    }
+
+    #qrcodeCanvas.example-style-1 .scan-region-highlight-svg,
+    #qrcodeCanvas.example-style-1 .code-outline-highlight {
+        stroke: #64a2f3 !important;
+    }
+
+    #qrcodeCanvas.example-style-2 {
+        position: relative;
+        width: max-content;
+        height: max-content;
+        overflow: hidden;
+    }
+    #qrcodeCanvas.example-style-2 .scan-region-highlight {
+        border-radius: 30px;
+        outline: rgba(0, 0, 0, .25) solid 50vmax;
+    }
+    #qrcodeCanvas.example-style-2 .scan-region-highlight-svg {
+        display: none;
+    }
+    #qrcodeCanvas.example-style-2 .code-outline-highlight {
+        stroke: rgba(255, 255, 255, .5) !important;
+        stroke-width: 15 !important;
+        stroke-dasharray: none !important;
+    }
+
+    #flash-toggle {
+        display: none;
+    }
+
+    hr {
+        margin-top: 32px;
+    }
+    input[type="file"] {
+        display: block;
+        margin-bottom: 16px;
+    }
+
+    .stop-button2 {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        font-size: 20px;
+        text-align: center;
+        line-height: 36px; /* 垂直居中 */
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .stop-button2:hover {
+        background-color: #f2f2f2;
+        border-color: #aaa;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+</style>
+<script>
+	//jQuery('#qrcode').qrcode("this plugin is great");
+	jQuery('#qrcodeCanvas').qrcode({
+		text	: "check_in"
+	});	
+
+    document.getElementById('stop-button2').addEventListener('click', () => {
+        removeQrcodeWindow();
+    });
+</script>
+
+</body>
+</html>
