@@ -53,10 +53,3 @@ In PARTY is a location-based event management platform that blends social featur
 2. **Browse Events:** view nearby events on the home page map
 3. **Join:** open an event to see details and register
 4. **Check-in:** check in on site to earn experience points
-
-### For Organizers
-
-1. **Publish an Event:** go to the upload form at `/uploadForm.html`
-2. **Fill in Details:** enter complete event information
-3. **Upload Images:** supports png, jpg, jpeg, gif
-4. **Manage Events:** view registrations and check-in status
