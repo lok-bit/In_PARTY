@@ -52,4 +52,4 @@ In PARTY is a location-based event management platform that blends social featur
 1. **Register:** first-time users sign up; a character is created automatically
 2. **Browse Events:** view nearby events on the home page map
 3. **Join:** open an event to see details and register
-4. **Check-in:** check in on site to earn experience points
+
